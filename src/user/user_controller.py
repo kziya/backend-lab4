@@ -1,4 +1,5 @@
 from flask import request, jsonify
+from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 
 from src import app
@@ -9,11 +10,13 @@ userService = UserService()
 
 
 @app.route('/user/<int:id>', methods=['GET'])
+@jwt_required()
 def getUserById(id):
     return userService.getUserById(id)
 
 
 @app.route('/user', methods=['POST'])
+@jwt_required()
 def addUser():
     try:
         UserSchema().load(data=request.get_json())
@@ -23,10 +26,12 @@ def addUser():
 
 
 @app.route('/users', methods=['GET'])
+@jwt_required()
 def getUsers():
     return userService.getUsers()
 
 
 @app.route('/user/<int:id>', methods=['DELETE'])
+@jwt_required()
 def deleteUser(id):
     return userService.deleteUser(id)

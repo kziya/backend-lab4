@@ -28,10 +28,11 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: test
+      JWT_SECRET: 339201251707265087850077576837793237102
     build:
-      context: backend-lab3
+      context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:3000"
+      - "3005:3000"
     depends_on:
       - db

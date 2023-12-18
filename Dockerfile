@@ -10,5 +10,5 @@ COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
 
-COPY backend-lab3 /app
+COPY . /app
 CMD ["python", "app.py"]

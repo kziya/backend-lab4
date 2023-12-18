@@ -5,10 +5,7 @@ from src.category.category_model import CategoryModel
 class CategoryRepository:
     _categories = []
 
-    def addCategory(self, name, idPrivateUser):
-        if idPrivateUser is None:
-            idPrivateUser = 0
-            
+    def addCategory(self, name, idPrivateUser=0):
         category = CategoryModel(name=name, idPrivateUser=idPrivateUser)
         db.session.add(category)
         db.session.commit()
